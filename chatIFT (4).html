@@ -245,7 +245,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         videoProvider: vm.runtime.ioDevices.video.provider
       };
 
-      scaffolding.setUsername("player####".replace(/#/g, () => Math.floor(Math.random() * 10)));
+      scaffolding.setUsername("user".replace(/#/g, () => Math.floor(Math.random() * 10)));
       scaffolding.setAccentColor("#3d59e6");
 
       try {
@@ -283,6 +283,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       for (const extension of []) {
         vm.extensionManager.loadExtensionURL(extension);
       }
+
+      vm.runtime.on('PROJECT_RUN_STOP', () => {
+        if (!vm.isPaused || !vm.isPaused()) {
+          window.close();
+        }
+      });
 
     } catch (e) {
       handleError(e);
