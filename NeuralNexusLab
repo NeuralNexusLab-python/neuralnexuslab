@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuralNexusLab</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: purple;
+            margin-top: 20px;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .button-container button:hover {
+            transform: scale(1.1);
+            background-color: #3700b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>NeuralNexusLab</h1>
+    <div class="button-container">
+        <button onclick="window.open('https://scratch.mit.edu/projects/1042486122/', '_blank')">chatAI</button>
+        <button onclick="window.open('https://scratch.mit.edu/projects/1026217153/', '_blank')">chatRBT</button>
+        <button onclick="window.open('https://scratch.mit.edu/projects/1028280151/', '_blank')">chatLXN</button>
+        <button onclick="window.open('https://scratch.mit.edu/projects/1051154324/', '_blank')">chatIFT</button>
+    </div>
+</body>
+</html>
