@@ -3,40 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scratch Project Redirect</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        input {
-            padding: 10px;
-            font-size: 16px;
-            width: 300px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-    </style>
+    <title>Scratch Project Embed</title>
 </head>
 <body>
-    <h1>Scratch Project Redirect</h1>
-    <p>Enter the Scratch Project ID:</p>
-    <input type="text" id="projectID" placeholder="e.g., 1051154324">
-    <button onclick="redirectToProject()">Go to Project</button>
+    <h1>嵌入 Scratch 專案</h1>
+    <p>輸入 Scratch Project ID，點擊「生成」，查看專案：</p>
+    <input type="text" id="projectId" placeholder="輸入專案ID">
+    <button onclick="generateIframe()">生成</button>
+
+    <div id="iframeContainer" style="margin-top: 20px;"></div>
 
     <script>
-        function redirectToProject() {
-            const projectID = document.getElementById('projectID').value;
-            if (projectID) {
-                const url = `https://scratch.mit.edu/projects/${projectID}/`;
-                window.location.href = url;
+        function generateIframe() {
+            const projectId = document.getElementById("projectId").value;
+            if (projectId) {
+                const iframeHtml = `
+                    <iframe src="https://scratch.mit.edu/projects/${projectId}/embed" 
+                            allowtransparency="true" width="485" height="402" 
+                            frameborder="0" scrolling="no" allowfullscreen></iframe>`;
+                document.getElementById("iframeContainer").innerHTML = iframeHtml;
             } else {
-                alert('Please enter a valid project ID.');
+                alert("請輸入有效的專案ID！");
             }
         }
     </script>
