@@ -4,24 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scratch Project Embed</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        #inputContainer {
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            border: 2px solid white;
+            border-radius: 5px;
+            background: black;
+            color: white;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: gray;
+            color: white;
+        }
+
+        #iframeContainer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        iframe {
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>嵌入 Scratch 專案</h1>
-    <p>輸入 Scratch Project ID，點擊「生成」，查看專案：</p>
-    <input type="text" id="projectId" placeholder="輸入專案ID">
-    <button onclick="generateIframe()">生成</button>
+    <div id="inputContainer">
+        <h1>嵌入 Scratch 專案</h1>
+        <p>輸入 Scratch Project ID 並點擊生成：</p>
+        <input type="text" id="projectId" placeholder="輸入專案ID">
+        <button onclick="generateIframe()">生成</button>
+    </div>
 
-    <div id="iframeContainer" style="margin-top: 20px;"></div>
+    <div id="iframeContainer"></div>
 
     <script>
         function generateIframe() {
             const projectId = document.getElementById("projectId").value;
+            const iframeContainer = document.getElementById("iframeContainer");
             if (projectId) {
                 const iframeHtml = `
                     <iframe src="https://scratch.mit.edu/projects/${projectId}/embed" 
-                            allowtransparency="true" width="485" height="402" 
-                            frameborder="0" scrolling="no" allowfullscreen></iframe>`;
-                document.getElementById("iframeContainer").innerHTML = iframeHtml;
+                            allowtransparency="true" width="800" height="600" 
+                            scrolling="no" allowfullscreen></iframe>`;
+                iframeContainer.innerHTML = iframeHtml;
+                // 自動捲動到專案視窗
+                iframeContainer.scrollIntoView({ behavior: 'smooth' });
             } else {
                 alert("請輸入有效的專案ID！");
             }
